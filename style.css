@@ -1,0 +1,324 @@
+/* ==========================================================
+   Level Up — playful, colorful, responsive styles
+   Mobile-first: base styles target narrow screens, and the
+   card grids add columns automatically as space allows.
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #fff8ec;          /* warm cream */
+  --bg-alt: #fdeedd;      /* slightly deeper cream for the second section */
+  --surface: #ffffff;     /* card background */
+  --text: #2b2140;        /* deep purple-black */
+  --text-muted: #574a6e;
+
+  --coral: #e8505b;
+  --yellow: #ffc93c;
+  --teal: #1a9e8f;
+  --purple: #6b3fc4;
+
+  --focus: #1748c9;       /* strong blue so focus stands out from the accents */
+
+  --radius: 18px;
+  --shadow: 0 4px 0 rgba(43, 33, 64, 0.12), 0 8px 24px rgba(43, 33, 64, 0.08);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* Elements with the hidden attribute must stay hidden even when
+   another rule (like display: flex) would otherwise show them. */
+[hidden] {
+  display: none !important;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Keyboard accessibility ---------- */
+:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* main gets focus from the skip link; no ring needed on a whole region */
+main:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background: var(--text);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Hidden visually but still read by screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  padding: 3rem 0 2.5rem;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 201, 60, 0.45) 0 70px, transparent 71px),
+    radial-gradient(circle at 88% 30%, rgba(26, 158, 143, 0.25) 0 90px, transparent 91px),
+    radial-gradient(circle at 70% 95%, rgba(232, 80, 91, 0.2) 0 60px, transparent 61px),
+    var(--bg);
+  border-bottom: 6px dashed var(--yellow);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.9rem;
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.intro {
+  max-width: 62ch;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: 3rem 0;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 800;
+}
+
+.section-lead {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Card grid ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 8px 0 rgba(43, 33, 64, 0.12), 0 14px 28px rgba(43, 33, 64, 0.1);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin-bottom: 0.75rem;
+}
+
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.6rem;
+  border-radius: 14px;
+  background: var(--bg-alt);
+}
+
+/* ---------- Process steps ---------- */
+.steps {
+  counter-reset: step;
+}
+
+.step {
+  counter-increment: step;
+  position: relative;
+  border-top-width: 8px;
+}
+
+/* Step number badge in the top-right corner */
+.step::after {
+  content: counter(step);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--text);
+  border-radius: 50%;
+}
+
+/* Cycle accent colors across the steps */
+.step:nth-child(5n + 1) { border-top-color: var(--coral); }
+.step:nth-child(5n + 2) { border-top-color: var(--yellow); }
+.step:nth-child(5n + 3) { border-top-color: var(--teal); }
+.step:nth-child(5n + 4) { border-top-color: var(--purple); }
+.step:nth-child(5n + 5) { border-top-color: var(--coral); }
+
+/* ---------- Filter buttons ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  min-height: 44px;           /* comfortable touch target */
+  padding: 0.5rem 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: #fff0c2;
+  transform: translateY(-2px);
+}
+
+/* The pressed (active) filter */
+.filter-btn[aria-pressed="true"] {
+  color: #ffffff;
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+/* ---------- Project tags ---------- */
+.project-card p {
+  flex-grow: 1;               /* keeps tags aligned at the bottom of each card */
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  padding: 0.15rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+/* Light tint backgrounds with dark text keep contrast above WCAG AA */
+.tag-2d   { background: #d4f3ef; color: #0d5c53; }
+.tag-3d   { background: #ece4fb; color: #4b2a99; }
+.tag-text { background: #fff0c2; color: #6b4e00; }
+.tag-jam  { background: #fde0e2; color: #9b1c26; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 2rem 0;
+  color: #ffffff;
+  background: var(--text);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  .card:hover,
+  .filter-btn:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Level Up: Making Your First Game</title>
+  <meta name="description" content="A friendly introduction to game development for beginners: how games get made and small projects to try first.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow"><span aria-hidden="true">🎮</span> Game development for beginners</p>
+      <h1>Level Up: Making Your First Game</h1>
+      <p class="intro">
+        Game development is the craft of turning an idea into something people can play.
+        It mixes art, code, sound and design, but you don't need to master all of them to begin.
+        Start with something tiny, finish it, and every game after that gets easier.
+      </p>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="section" aria-labelledby="process-heading">
+      <div class="wrap">
+        <h2 id="process-heading">How a Game Gets Made</h2>
+        <p class="section-lead">Most games, big or small, go through the same five stages.</p>
+
+        <ol class="card-grid steps">
+          <li class="card step">
+            <span class="card-icon" aria-hidden="true">💡</span>
+            <h3>Idea</h3>
+            <p>Pick one simple thing the player does, like jump, match or dodge, and build around it.</p>
+          </li>
+          <li class="card step">
+            <span class="card-icon" aria-hidden="true">🧪</span>
+            <h3>Prototype</h3>
+            <p>Make a rough, ugly version fast to find out whether the idea is actually fun.</p>
+          </li>
+          <li class="card step">
+            <span class="card-icon" aria-hidden="true">🎨</span>
+            <h3>Art &amp; Sound</h3>
+            <p>Add visuals, music and sound effects that make the game feel alive.</p>
+          </li>
+          <li class="card step">
+            <span class="card-icon" aria-hidden="true">🕹️</span>
+            <h3>Playtest</h3>
+            <p>Watch other people play without helping them, then fix what confuses them.</p>
+          </li>
+          <li class="card step">
+            <span class="card-icon" aria-hidden="true">🚀</span>
+            <h3>Release</h3>
+            <p>Share it with friends or online. A finished small game beats an unfinished big one.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="projects-heading">
+      <div class="wrap">
+        <h2 id="projects-heading">Beginner Project Ideas</h2>
+        <p class="section-lead">Small projects that teach the basics. Use the buttons to filter by type.</p>
+
+        <div class="filters" role="group" aria-label="Filter projects by type" hidden>
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="2d" aria-pressed="false">2D</button>
+          <button type="button" class="filter-btn" data-filter="3d" aria-pressed="false">3D</button>
+          <button type="button" class="filter-btn" data-filter="text" aria-pressed="false">Text</button>
+          <button type="button" class="filter-btn" data-filter="jam" aria-pressed="false">Jam</button>
+        </div>
+        <p id="filter-status" class="visually-hidden" aria-live="polite"></p>
+
+        <ul class="card-grid projects">
+          <li class="card project-card" data-tags="2d">
+            <span class="card-icon" aria-hidden="true">🏓</span>
+            <h3>Paddle &amp; Ball</h3>
+            <p>Two paddles, one ball. A classic first project for learning movement, collisions and scoring.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-2d">2D</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="text">
+            <span class="card-icon" aria-hidden="true">🗺️</span>
+            <h3>Text Adventure</h3>
+            <p>Rooms, items and typed commands. Teaches game logic without needing any art.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-text">Text</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="2d">
+            <span class="card-icon" aria-hidden="true">🍄</span>
+            <h3>One-Screen Platformer</h3>
+            <p>Run, jump and reach the flag. Good practice for gravity, controls and level design.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-2d">2D</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="3d">
+            <span class="card-icon" aria-hidden="true">🎱</span>
+            <h3>Rolling-Ball Maze</h3>
+            <p>Tilt a board to guide a ball to the goal. A gentle first step into 3D physics and cameras.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-3d">3D</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="2d jam">
+            <span class="card-icon" aria-hidden="true">🏃</span>
+            <h3>Endless Runner</h3>
+            <p>Dodge obstacles that speed up over time. Small enough to build in a weekend game jam.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-2d">2D</li>
+              <li class="tag tag-jam">Jam</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="text jam">
+            <span class="card-icon" aria-hidden="true">📖</span>
+            <h3>Choose-Your-Path Story</h3>
+            <p>A short branching story with a few endings. Great for writers and quick jam entries.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-text">Text</li>
+              <li class="tag tag-jam">Jam</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="3d jam">
+            <span class="card-icon" aria-hidden="true">🏠</span>
+            <h3>Tiny 3D Room</h3>
+            <p>Build one cozy room the player can walk around and explore. Mood matters more than mechanics.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-3d">3D</li>
+              <li class="tag tag-jam">Jam</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Made as a DS219 practice project. Go make something small and finish it!</p>
+    </div>
+  </footer>
+</body>
+</html>
