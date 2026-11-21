@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Level Up: Making Your First Game</title>
-  <meta name="description" content="A friendly introduction to game development for beginners: how games get made and small projects to try first.">
+  <meta name="description" content="A friendly introduction to game development for beginners: how games get made, small projects and game jams to try, and creators to learn from.">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -13,7 +13,13 @@
 
   <header class="site-header">
     <div class="wrap">
-      <p class="eyebrow"><span aria-hidden="true">🎮</span> Game development for beginners</p>
+      <div class="header-top">
+        <p class="eyebrow"><span aria-hidden="true">🎮</span> Game development for beginners</p>
+        <button type="button" id="theme-toggle" class="pill-btn" hidden>
+          <span aria-hidden="true">🎨</span> Theme: <span id="theme-name">Playful</span>
+        </button>
+      </div>
+      <p id="theme-status" class="visually-hidden" aria-live="polite"></p>
       <h1>Level Up: Making Your First Game</h1>
       <p class="intro">
         Game development is the craft of turning an idea into something people can play.
@@ -61,15 +67,15 @@
 
     <section class="section section-alt" aria-labelledby="projects-heading">
       <div class="wrap">
-        <h2 id="projects-heading">Beginner Project Ideas</h2>
-        <p class="section-lead">Small projects that teach the basics. Use the buttons to filter by type.</p>
+        <h2 id="projects-heading">Beginner Projects &amp; Game Jams</h2>
+        <p class="section-lead">Small projects that teach the basics, plus popular game jams to join. Use the buttons to filter by type.</p>
 
         <div class="filters" role="group" aria-label="Filter projects by type" hidden>
-          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="filter-btn" data-filter="2d" aria-pressed="false">2D</button>
-          <button type="button" class="filter-btn" data-filter="3d" aria-pressed="false">3D</button>
-          <button type="button" class="filter-btn" data-filter="text" aria-pressed="false">Text</button>
-          <button type="button" class="filter-btn" data-filter="jam" aria-pressed="false">Jam</button>
+          <button type="button" class="pill-btn filter-btn" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="pill-btn filter-btn" data-filter="2d" aria-pressed="false">2D</button>
+          <button type="button" class="pill-btn filter-btn" data-filter="3d" aria-pressed="false">3D</button>
+          <button type="button" class="pill-btn filter-btn" data-filter="text" aria-pressed="false">Text</button>
+          <button type="button" class="pill-btn filter-btn" data-filter="jam" aria-pressed="false">Jam</button>
         </div>
         <p id="filter-status" class="visually-hidden" aria-live="polite"></p>
 
@@ -106,32 +112,121 @@
               <li class="tag tag-3d">3D</li>
             </ul>
           </li>
-          <li class="card project-card" data-tags="2d jam">
+          <li class="card project-card" data-tags="2d">
             <span class="card-icon" aria-hidden="true">🏃</span>
             <h3>Endless Runner</h3>
-            <p>Dodge obstacles that speed up over time. Small enough to build in a weekend game jam.</p>
+            <p>Dodge obstacles that speed up over time. Teaches spawning, difficulty curves and high scores.</p>
             <ul class="tags" aria-label="Tags">
               <li class="tag tag-2d">2D</li>
-              <li class="tag tag-jam">Jam</li>
             </ul>
           </li>
-          <li class="card project-card" data-tags="text jam">
+          <li class="card project-card" data-tags="text">
             <span class="card-icon" aria-hidden="true">📖</span>
             <h3>Choose-Your-Path Story</h3>
-            <p>A short branching story with a few endings. Great for writers and quick jam entries.</p>
+            <p>A short branching story with a few endings. Great for writers who want to try game design.</p>
             <ul class="tags" aria-label="Tags">
               <li class="tag tag-text">Text</li>
-              <li class="tag tag-jam">Jam</li>
             </ul>
           </li>
-          <li class="card project-card" data-tags="3d jam">
+          <li class="card project-card" data-tags="3d">
             <span class="card-icon" aria-hidden="true">🏠</span>
             <h3>Tiny 3D Room</h3>
             <p>Build one cozy room the player can walk around and explore. Mood matters more than mechanics.</p>
             <ul class="tags" aria-label="Tags">
               <li class="tag tag-3d">3D</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="jam">
+            <span class="card-icon" aria-hidden="true">🔥</span>
+            <h3>Brackeys Game Jam</h3>
+            <p>A week-long online jam held twice a year on itch.io. The extra time makes it a relaxed first jam.</p>
+            <ul class="tags" aria-label="Tags">
               <li class="tag tag-jam">Jam</li>
             </ul>
+          </li>
+          <li class="card project-card" data-tags="jam">
+            <span class="card-icon" aria-hidden="true">⏱️</span>
+            <h3>GMTK Game Jam</h3>
+            <p>A 48-hour summer jam hosted by Game Maker's Toolkit, and one of the biggest on itch.io. Keep your idea tiny.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-jam">Jam</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="jam">
+            <span class="card-icon" aria-hidden="true">🏆</span>
+            <h3>Ludum Dare</h3>
+            <p>One of the oldest online jams, running since 2002. Try the 72-hour Jam with friends or the solo 48-hour Compo.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-jam">Jam</li>
+            </ul>
+          </li>
+          <li class="card project-card" data-tags="jam">
+            <span class="card-icon" aria-hidden="true">🌍</span>
+            <h3>Global Game Jam</h3>
+            <p>A yearly 48-hour jam at local sites and online around the world. A great way to meet other developers.</p>
+            <ul class="tags" aria-label="Tags">
+              <li class="tag tag-jam">Jam</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="creators-heading">
+      <div class="wrap">
+        <h2 id="creators-heading">Creators to Learn From</h2>
+        <p class="section-lead">Popular YouTube channels with tutorials, devlogs and advice. Each card opens the channel in a new tab.</p>
+
+        <ul class="creator-list">
+          <li>
+            <a class="creator-card" href="https://www.youtube.com/@Brackeys" target="_blank" rel="noopener noreferrer">
+              <span class="avatar avatar-1" aria-hidden="true">B</span>
+              <div>
+                <h3>Brackeys</h3>
+                <p>Asbjørn Thirslund's channel, famous for 400+ beginner-friendly Unity tutorials. It returned in 2024 with Godot tutorials and also runs the Brackeys Game Jam.</p>
+                <span class="creator-link">Watch on YouTube <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in a new tab)</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="creator-card" href="https://www.youtube.com/@CodeMonkeyUnity" target="_blank" rel="noopener noreferrer">
+              <span class="avatar avatar-2" aria-hidden="true">CM</span>
+              <div>
+                <h3>Code Monkey</h3>
+                <p>Hugo Cardoso, an indie developer with games on Steam, makes clear Unity and C# tutorials and full-length courses.</p>
+                <span class="creator-link">Watch on YouTube <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in a new tab)</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="creator-card" href="https://www.youtube.com/@Blackthornprod" target="_blank" rel="noopener noreferrer">
+              <span class="avatar avatar-3" aria-hidden="true">BP</span>
+              <div>
+                <h3>Blackthornprod</h3>
+                <p>Brothers Noa and Liam Calice share tutorials, game dev challenges and devlogs, and host their own game jams.</p>
+                <span class="creator-link">Watch on YouTube <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in a new tab)</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="creator-card" href="https://www.youtube.com/@Goodgis" target="_blank" rel="noopener noreferrer">
+              <span class="avatar avatar-4" aria-hidden="true">G</span>
+              <div>
+                <h3>Goodgis</h3>
+                <p>Mark, a graphic designer by day, makes cute, colorful games in Godot and shares devlogs and tips for beginners.</p>
+                <span class="creator-link">Watch on YouTube <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in a new tab)</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="creator-card" href="https://www.youtube.com/@JuniperDev" target="_blank" rel="noopener noreferrer">
+              <span class="avatar avatar-5" aria-hidden="true">JD</span>
+              <div>
+                <h3>Juniper Dev</h3>
+                <p>Devlogs, game dev challenges and fun breakdowns of how games are built, like a look inside Undertale's code.</p>
+                <span class="creator-link">Watch on YouTube <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in a new tab)</span></span>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
